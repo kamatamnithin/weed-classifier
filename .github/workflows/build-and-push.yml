@@ -35,8 +35,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          # Prefer explicit GHCR token, fallback to the built-in GITHUB_TOKEN if not provided
-          password: ${{ secrets.GHCR_TOKEN || github.token }}
+          password: ${{ secrets.GHCR_TOKEN }}
 
       - name: Build and push frontend image
         uses: docker/build-push-action@v4
