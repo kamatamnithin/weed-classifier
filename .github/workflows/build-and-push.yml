@@ -51,6 +51,7 @@ jobs:
 
       - name: Clean up Docker after frontend
         run: |
+          docker rmi ghcr.io/${{ github.repository_owner }}/weed-frontend:latest ghcr.io/${{ github.repository_owner }}/weed-frontend:${{ github.sha }} || true
           docker system prune -f
           docker image prune -f
 
