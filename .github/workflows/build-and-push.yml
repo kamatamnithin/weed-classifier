@@ -2,8 +2,14 @@ name: Build and push Docker images
 
 on:
   push:
-    branches: [ main, master ]
-  workflow_dispatch:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:       # <- add this
+    inputs:
+      reason:
+        description: 'Optional trigger reason'
+        required: false
 
 jobs:
   build-and-push:
