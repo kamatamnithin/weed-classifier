@@ -64,6 +64,11 @@ jobs:
           echo "Frontend image: ghcr.io/${{ github.repository_owner }}/weed-frontend:${{ github.sha }}"
           echo "Backend image: ghcr.io/${{ github.repository_owner }}/weed-backend:${{ github.sha }}"
 
+      - name: Clean up Docker
+        run: |
+          docker system prune -f
+          docker image prune -f
+
       - name: Smoke test backend image
         run: |
           echo "Starting backend container for smoke test..."
