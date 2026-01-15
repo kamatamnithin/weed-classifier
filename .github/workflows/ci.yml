@@ -39,7 +39,8 @@ jobs:
         run: npm run build
 
       - name: Build Docker images
-        uses: docker/build-push-action@v5
-        with:
-          push: false
-          tags: weed-classifier/backend:ci, weed-classifier/frontend:ci
+        run: |
+          echo "Building frontend image..."
+          docker build -f Dockerfile.frontend -t weed-classifier/frontend:ci .
+          echo "Building backend image..."
+          docker build -f ml_backend/Dockerfile -t weed-classifier/backend:ci ./ml_backend
